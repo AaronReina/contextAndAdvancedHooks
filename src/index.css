@@ -1,13 +1,199 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+.centerAbsolute {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.spinner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: blue rgba(255, 255, 255, 0.1) rgba(255, 255, 255, 0.1);
+  animation: spin 0.5s ease infinite;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  width: 280px;
+  height: 210px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 4px 8px 12px 0 rgba(0, 0, 0, 0.4);
+  text-align: center;
+  overflow: hidden;
+  animation: show-modal 0.7s ease-in-out;
+}
+
+.title {
+  display: block;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  margin: 14px 0 5px 0;
+}
+
+.button {
+  height: 40px;
+  width: 100%;
+  margin-top: 15px;
+  background-color: #f65656;
+  color: #fff;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.imputCustom {
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 8px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  width: 100%;
+}
+
+.buttonCustom {
+  height: 40px;
+  width: 100%;
+  margin-top: 15px;
+  background-color: blue;
+  color: #fff;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.errorTextCustom {
+  font-size: 14px;
+  margin-left: 9px;
+  color: red;
+}
+
+.labelCustom {
+  font-size: 14px;
+  margin-left: 9px;
+}
+
+.imputCustom:focus {
+  outline: none;
+}
+
+.imputCustomError {
+  border: 1px solid red;
+}
+
+.imputCustomError:focus {
+  outline: none;
+}
+
+.stepper {
+  font-size: 1rem);
+  position: relative;
+  counter-reset: step 0;
+  width: 100%;
+  margin: 2rem 0;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.stepper > .step {
+  position: relative;
+  counter-increment: step;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.stepper > .step::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #eee;
+  left: 0;
+  top: 1.1rem;
+}
+.stepper > .step > .step-label {
+  position: relative;
+  width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  background: #eee;
+  color: #777;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.stepper > .step > .step-label::before {
+  content: counter(step);
+}
+.stepper > .step.active::before {
+  background: linear-gradient(to right, blue, #eee);
+}
+.stepper > .step.active > .step-label {
+  background: blue;
+  color: #f9f9f9;
+  font-weight: bold;
+}
+.stepper > .step.completed::before {
+  background: blue;
+}
+.stepper > .step.completed > .step-label {
+  background: blue;
+  color: #f9f9f9;
+}
+.stepper > .step > .step-description {
+  font-size: x-small;
+  color: #999;
+  margin-top: 0.5rem;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+}
+.stepper > .step.active > .step-description,
+.stepper > .step.completed > .step-description {
+  color: #444;
+}
+.stepper > .step.active > .step-description {
+  font-weight: bold;
+}
+
+@keyframes show-modal {
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
